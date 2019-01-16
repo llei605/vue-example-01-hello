@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+
+<h1>*** 模板语法 ***</h1>
+<h2>功能描述：</h2>
+<h2>>> 让标签显示指定的数据、文本、图片、页面的；</h2>
+<h2>>> 让按钮实现指定的功能，函数等。</h2>
+<hr>
+<hr>
+
+<div id="app">
+
+    <h3>1. 数据绑定： v-model </h3>
+    <input type="text" v-model="userName">
+    <hr>
+    <br>
+
+    <h3>2. 双花括号的用法：</h3>
+    <p>2.1 显示变量的值：Hello {{ userName }}</p>
+    <p>2.2 运行JS表达式1： {{ a + b}}</p>
+    <p>2.3 运行JS表达式2： {{ a > b ? 'xxx' : 'ooo'}}</p>
+    <p>2.4 运行JS表达式3： {{ msg.split('=')[1] }}</p>
+    <hr>
+    <br>
+
+    <h3>3. 文本内容： v-text</h3>
+    <p v-text="msg"></p>
+    <hr>
+    <br>
+
+    <h3>4. 超文本内容： v-html</h3>
+    <p v-html="msg"></p>
+    <hr>
+    <br>
+
+    <h3>5. 强制数据绑定：:src="imgUrl"</h3>
+    <img :src="imgUrl" style="height: 60px; width: 60px;">
+    <hr>
+    <br>
+
+    <h3>6. 绑定事件监听</h3>
+    <input type="button" @click="test1" value="Button">
+    <hr>
+    <br>
+
+    <h3>7. 一次性的插值 v-once</h3>
+    <p v-once>Hello {{userName}}</p>    <!-- 当数据改变时，插值处的内容不会更新 -->
+
+    <!-- 注意： 你的站点上动态渲染的任意 HTML 可能会非常危险，因为它很容易导致 XSS 攻击。
+               请只对可信内容使用 HTML 插值，绝不要对用户提供的内容使用插值。-->
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+<script type="text/javascript">
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            userName: 'tom',
+            msg: '<a href="http://www.baidu.com">baidu.com</a>',
+            imgUrl: 'https://cn.vuejs.org/images/logo.png',
+            a: 1,
+            b: 3
+        },
+        methods: {
+            test1 () {
+                alert("Hello Vuejs!")
+            }
+        }
+    })
+</script>
+</body>
+</html>

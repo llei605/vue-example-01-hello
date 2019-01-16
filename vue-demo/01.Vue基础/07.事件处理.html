@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--
+    *** 事件处理 ***
+-->
+<div id="app">
+    <h2>1. 绑定监听</h2>
+    <button @click="test1(123, $event)">Click111</button>
+    <hr>
+    <h2>2. 事件修饰符</h2>
+    <div style="width: 200px; height: 200px; background: red;" @click="test2">
+        <div style="width: 100px; height: 100px; background: blue;" @click.stop="test3">  <!-- .stop：停止事件冒泡 -->
+
+        </div>
+    </div>
+    <br>
+    <div>
+        <a href="http://www.baidu.com" @click.prevent="test4">**click here**</a>  <!-- .prevent：阻止事件默认行为 -->
+    </div>
+    <hr>
+    <h2>3. 按键修饰符</h2>
+    <input type="text" @keyup.13="test5"> <br>
+    <input type="text" @keyup.enter="test5"> <br>
+    <input type="text" @keyup.space="test5">
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+<script type="text/javascript">
+    new Vue({
+        el: '#app',
+        data: {
+
+        },
+        methods: {
+            test1 (number, event) {
+                alert(number + '----' + event.target.innerHTML)
+            },
+            test2 () {
+                alert('out')
+            },
+            test3 () {
+                alert('in')
+            },
+            test4 (event) {
+                alert('aaaaa')
+            },
+            test5 (event) {
+                alert(event.target.value + ' ' + event.keyCode)
+            }
+        }
+    })
+</script>
+</body>
+</html>

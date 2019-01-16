@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--
+    *** 列表渲染 ***
+
+-->
+
+<div id="app">
+    <h2>*** v-for 遍历数组 ***</h2>
+    <ul>
+        <li v-for="(p, index) in persons" :key="index">
+            {{index}} >> {{p.name}} >> {{p.age}} >>
+            <button @click="handleDelete(index)">del</button>
+            <button @click="handleUpdate(index, {name: 'Cat', age: 00})">update</button>
+        </li>
+    </ul>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+<script type="text/javascript">
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            persons: [
+                {name: 'aaa', age: 11},
+                {name: 'bbb', age: 22},
+                {name: 'ccc', age: 33},
+                {name: 'ddd', age: 44}
+            ]
+        },
+        methods: {
+            handleDelete (index) {
+                this.persons.splice(index, 1)
+            },
+            handleUpdate (index, newContent) {
+                // this.persons[index] = newContent
+                this.persons.splice(index, 1, newContent)
+            }
+        }
+    })
+</script>
+
+</body>
+</html>

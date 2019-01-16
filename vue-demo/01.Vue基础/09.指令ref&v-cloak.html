@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<!--
+    *** vue的内部指令 ***
+    ref：为某个元素注册一个唯一标识，vue对象通过$els属性访问这个元素对象
+    v-cloak：放置闪现表达式，与css配合：[v-cloak] {desplay: none}
+-->
+<div id="app">
+    <p ref="content1">baidu.com</p>
+    <button @click="hint">提示</button>
+    <hr>
+    <p v-cloak>{{msg}}</p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+<script type="text/javascript">
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            msg: 'asdfasdfasdfasdf'
+        },
+        methods: {
+            hint () {
+                alert(this.$refs.content1.textContent)
+            }
+        }
+    })
+</script>
+</body>
+</html>

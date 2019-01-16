@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .aClass {
+            color: red;
+        }
+        .bClass {
+            color: blue;
+        }
+        .dClass {
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body>
+<h1>class 绑定</h1>
+<h2>功能说明：</h2>
+<h2>>> 给 v-bind:class 一个对象，以动态地切换 class</h2>
+<hr>
+<hr>
+<br>
+
+<div id="app">
+    <p :class="myClass" class="dClass">Hello World</p>
+    <input  type="button" @click="changeColor" value="_ChangeColor_" />
+    <hr>
+    <br>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+<script type="text/javascript">
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            myClass: 'aClass',
+            x: 3,
+            y: 4
+        },
+        methods: {
+            changeColor () {
+                this.a = 'bClass'
+            }
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+
+<h1>*** 计算属性 ***</h1>
+<h2>功能描述：</h2>
+<h2>>> 对数据进行逻辑相对复杂的实时操作。</h2>
+<h2>当依赖数字发生变化是，触发计算属性。</h2>
+<hr>
+<hr>
+<br>
+
+<div id="app">
+    <p>1. <input type="text" placeholder="First Name" v-model="firstName"><span>这里输入First Name</span></p>
+    <p>2. <input type="text" placeholder="Last Name" v-model="lastName"><span>这里输入Last Name</span></p>
+    <p>3. <input type="text" v-model="fullName1"></p>
+    <p>4. <input type="text" v-model="fullName2"></p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+<script type="text/javascript">
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            firstName: '',
+            lastName: ''
+        },
+        computed: {
+            fullName1 () {
+                return this.firstName + ' ' + this.lastName
+            },
+            // 计算属性的getter和setter方法
+            fullName2: {
+                // 计算并返回当前属性值
+                get () {
+                    return this.firstName + ' ' + this.lastName
+                },
+                set (value) {
+                    names = value.split(' ')
+                    this.firstName = names[0]
+                    this.lastName = names[1]
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>

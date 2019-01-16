@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--
+    *** 条件渲染 ***
+    1. v-if
+    2. v-else
+    3. v-show
+    如果需要频繁切换 v-show 比较好
+-->
+<div id="app">
+    <p v-if="ok">111</p>
+    <p v-else>222</p>
+
+    <hr>
+
+    <button @click="ok=!ok">Button</button>
+
+    <hr>
+
+    <p v-show="ok">aaa</p>
+    <p v-show="!ok">bbb</p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+<script type="text/javascript">
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            ok: false
+        }
+    })
+</script>
+</body>
+</html>

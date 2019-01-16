@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <h2>显示格式化的日期时间</h2>
+    <p>{{nowDate}}</p>
+    <p>完整版 : {{nowDate | dateStrFormat}}</p>
+    <p>日期版 : {{nowDate | dateStrFormat('YYYY年MM月DD日')}}</p>
+    <p>时间版 : {{nowDate | dateStrFormat('hh:mm:ss')}}</p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js"></script>
+<script type="text/javascript">
+    // 定义一个过滤器
+    Vue.filter('dateStrFormat', function (value, format) {
+        return moment(value).format(format || 'YYYY-MM-DD HH:mm:ss')
+    })
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            nowDate: new Date()
+        }
+    })
+</script>
+</body>
+</html>
